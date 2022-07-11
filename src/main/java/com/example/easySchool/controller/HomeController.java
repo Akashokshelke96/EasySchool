@@ -12,4 +12,8 @@ public class HomeController {
         model.addAttribute("username","Akash Shelke Human");
        return "home.html";
     }
+
+
+
+
 }
