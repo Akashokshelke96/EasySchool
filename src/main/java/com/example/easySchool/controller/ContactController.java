@@ -8,7 +8,7 @@ public class ContactController {
 
 
     @RequestMapping(value = {"/contact"})
-    public String displayCourses() {
+    public String displayContact() {
         return "contact.html";
     }
 }
