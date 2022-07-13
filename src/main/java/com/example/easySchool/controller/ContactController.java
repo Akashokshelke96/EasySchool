@@ -49,9 +49,9 @@ public class ContactController {
 
 
     @RequestMapping(value = "/saveMsg",method = POST)
-    public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors){
-        if(errors.hasErrors()){
-            logger.error("Error occured");
+    public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors error){
+        if(error.hasErrors()){
+            logger.error("Error occured because of invalid input" + error.toString());
             return "contact.html";
         }
         contactService.saveMessageDetails(contact);
