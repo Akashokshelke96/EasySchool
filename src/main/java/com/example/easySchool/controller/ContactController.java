@@ -2,6 +2,7 @@ package com.example.easySchool.controller;
 
 import com.example.easySchool.models.Contact;
 import com.example.easySchool.service.ContactService;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,10 +52,12 @@ public class ContactController {
     @RequestMapping(value = "/saveMsg",method = POST)
     public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors error){
         if(error.hasErrors()){
-            logger.error("Error occured because of invalid input" + error.toString());
+            logger.error("Error occurred because of invalid input" + error.toString());
             return "contact.html";
         }
         contactService.saveMessageDetails(contact);
+        contactService.setCounter(contactService.getCounter()+1);
+        logger.info("Number of times contact form is submitted: " + contactService.getCounter() );
         return "redirect:/contact";
     }
 }
