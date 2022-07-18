@@ -1,7 +1,10 @@
 package com.example.easySchool.config;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -27,9 +30,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().formLogin()
 //                .and().httpBasic();
 
-        http.csrf().ignoringAntMatchers("/savemsg").and()
+        http.csrf().ignoringAntMatchers("/savemsg").ignoringAntMatchers("/h2-console/**").and() //this is to activate CSRF protection for public page Contact Page
                 .authorizeRequests()
                 .mvcMatchers("/dashboard").authenticated()
+                .mvcMatchers("/displayMessages").hasRole("ADMIN")
                 .mvcMatchers("/home").permitAll()
                 .mvcMatchers("/holidays/**").permitAll()
                 .mvcMatchers("/contact").authenticated()
@@ -40,7 +44,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
+                .and().authorizeRequests().mvcMatchers("/h2-console/**").permitAll()
                 .and().httpBasic();
+
+        http.headers().frameOptions().disable();
 
     }
 
