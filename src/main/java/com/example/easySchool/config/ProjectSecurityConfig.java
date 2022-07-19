@@ -30,7 +30,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().formLogin()
 //                .and().httpBasic();
 
-        http.csrf().ignoringAntMatchers("/savemsg").ignoringAntMatchers("/h2-console/**").and() //this is to activate CSRF protection for public page Contact Page
+        http.csrf().ignoringAntMatchers("/savemsg").and() //this is to activate CSRF protection for public page Contact Page
                 .authorizeRequests()
                 .mvcMatchers("/dashboard").authenticated()
                 .mvcMatchers("/displayMessages").hasRole("ADMIN")
@@ -44,10 +44,9 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
-                .and().authorizeRequests().mvcMatchers("/h2-console/**").permitAll()
                 .and().httpBasic();
 
-        http.headers().frameOptions().disable();
+
 
     }
 

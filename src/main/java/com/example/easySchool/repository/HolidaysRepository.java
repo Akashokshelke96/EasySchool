@@ -23,13 +23,14 @@ public class HolidaysRepository {
     }
 
     public List<Holiday> findAllHolidays() {
-        String sql = "SELECT REASON, DAY FROM HOLIDAYS";
+        String sql = "select reason,day,type from holidays";
         List<Holiday> list = jdbcTemplate.query(sql ,
                 new RowMapper<Holiday>() {
                     @Override
                     public Holiday mapRow(ResultSet rs, int rowNum) throws SQLException {
                         String reason = rs.getString("REASON");
                         String day = rs.getString("DAY");
+                        String type = rs.getString("TYPE");
                         Holiday holiday = Holiday.builder().reason(reason).day(day).build();
                         return holiday;
                     }

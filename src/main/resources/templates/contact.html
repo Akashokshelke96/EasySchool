@@ -46,16 +46,16 @@ Author URL: http://w3layouts.com
             <div class="row contact-block">
                 <div class="col-md-7 contact-right">
                     <ul>
-                        <li class="alert alert-danger" role="alert" th:each="error: ${#fields.errors('contact.*')}" th:text="${error}"/>
+                        <li class="alert alert-danger" role="alert" th:each="error: ${#fields.errors('contact.*')}" th:text="${error}"></li>
                         </li>
                     </ul>
                     <!--/*@thymesVar id="contact" type="templates"*/-->
                     <form th:action="@{/saveMsg}" method="post" class="signin-form" th:object="${contact}">
                         <div class="input-grids">
-                            <div class="row">)
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <input type="text" name="name" th:feild="*{name}" id="name" placeholder="Your Name"
-                                        class="contact-input"  />
+                                           class="contact-input"/>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" th:feild="*{mobileNum}"name="mobileNum" id="mobileNum" placeholder="Your Mobile Number"
