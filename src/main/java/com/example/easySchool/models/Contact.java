@@ -1,18 +1,27 @@
 package com.example.easySchool.models;
 
 import lombok.Data;
+import lombok.Generated;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.NumberFormat;
 
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Data
+@Entity
+@Table(name="contact_msg")
 public class Contact extends BaseEntity{
 
-    private int contactId;
 
+
+    @Id//makes contact_id as primary id column
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
+    @GenericGenerator(name = "native",strategy = "native")
+    @Column(name="contact_id")
+    private int contactId;
 
     @NotBlank(message = "Name can cannot be left Blank")
     @Size(min = 3, message = "Minimum 3 characters are required")
