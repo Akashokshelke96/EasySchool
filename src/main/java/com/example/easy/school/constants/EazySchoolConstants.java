@@ -1,4 +1,4 @@
-package com.example.easySchool.constants;
+package com.example.easy.school.constants;
 
 public class EazySchoolConstants {
 

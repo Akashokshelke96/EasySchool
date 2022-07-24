@@ -1,4 +1,4 @@
-package com.example.easySchool.controller;
+package com.example.easy.school.controller;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.util.Assert;

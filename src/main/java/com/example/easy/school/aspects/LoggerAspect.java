@@ -1,4 +1,4 @@
-package com.example.easySchool.aspects;
+package com.example.easy.school.aspects;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ import java.time.Instant;
 @Component
 public class LoggerAspect {
 
-    @Around("execution(* com.example.easySchool..*.*(..))")
+    @Around("execution(* com.example.easy.school..*.*(..))")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info(joinPoint.getSignature().toString() + " method execution start");
         Instant start = Instant.now();
@@ -31,7 +31,7 @@ public class LoggerAspect {
         return returnObj;
     }
 
-    @AfterThrowing(value = "execution(* com.example.easySchool.*.*(..))",throwing = "ex")
+    @AfterThrowing(value = "execution(* com.example.easy.school.*.*(..))",throwing = "ex")
     public void logException(JoinPoint joinPoint, Exception ex) {
         log.error(joinPoint.getSignature()+ " An exception happened due to : "+ex.getMessage());
     }

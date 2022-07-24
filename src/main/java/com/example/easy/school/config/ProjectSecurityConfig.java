@@ -1,4 +1,4 @@
-package com.example.easySchool.config;
+package com.example.easy.school.config;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.context.annotation.Bean;

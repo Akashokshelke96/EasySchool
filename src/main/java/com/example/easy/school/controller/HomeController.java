@@ -1,4 +1,4 @@
-package com.example.easySchool.controller;
+package com.example.easy.school.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.example.easySchool.config;
+package com.example.easy.school.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
