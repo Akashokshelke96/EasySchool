@@ -1,26 +1,18 @@
-package com.example.easySchool.repository;
+package com.example.easy.school.repository;
 
 
-import com.example.easySchool.constants.EazySchoolConstants;
-import com.example.easySchool.models.Contact;
-import com.example.easySchool.rowMappers.ContactRowMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.easy.school.models.Contact;
+
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
-import org.springframework.security.core.Authentication;
+
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface ContactRepository extends CrudRepository<Contact,Integer> {
 
-
+    List<Contact> findByStatus(String status);
 }
 
 

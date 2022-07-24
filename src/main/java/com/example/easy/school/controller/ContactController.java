@@ -1,7 +1,8 @@
-package com.example.easySchool.controller;
+package com.example.easy.school.controller;
 
-import com.example.easySchool.models.Contact;
-import com.example.easySchool.service.ContactService;
+import com.example.easy.school.models.Contact;
+import com.example.easy.school.service.ContactService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,13 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+
+@Slf4j
 @Controller
 public class ContactController {
 
     private final ContactService contactService;
+
 
     Logger logger = LoggerFactory.getLogger(ContactController.class);
 
@@ -65,15 +69,15 @@ public class ContactController {
 
     @RequestMapping("/displayMessages")
     public ModelAndView displayMessages(Model model) {
-        List<Contact> contactMsgs = contactService.findMsgsWithOpenStatus();
+        List<Contact> contactMsgs = contactService.findByStatus();
         ModelAndView modelAndView = new ModelAndView("messages.html");
         modelAndView.addObject("contactMsgs",contactMsgs);
         return modelAndView;
     }
 
     @RequestMapping(value = "/closeMsg",method = GET)
-    public String closeMsg(@RequestParam int id, Authentication authentication) {
-        contactService.updateMsgStatus(id,authentication.getName());
+    public String closeMsg(@RequestParam int id) {
+        contactService.updateMsgStatus(id);
         return "redirect:/displayMessages";
     }
 }

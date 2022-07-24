@@ -1,9 +1,7 @@
-package com.example.easySchool.models;
+package com.example.easy.school.models;
 
 import lombok.Data;
-import lombok.Generated;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,10 +9,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Data
 @Entity
 @Table(name="contact_msg")
 public class Contact extends BaseEntity{
-
 
 
     @Id//makes contact_id as primary id column

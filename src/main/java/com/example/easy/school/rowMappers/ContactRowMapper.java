@@ -1,6 +1,6 @@
-package com.example.easySchool.rowMappers;
+package com.example.easy.school.rowMappers;
 
-import com.example.easySchool.models.Contact;
+import com.example.easy.school.models.Contact;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
