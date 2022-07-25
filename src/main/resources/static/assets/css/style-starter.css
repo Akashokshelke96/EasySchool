@@ -11782,8 +11782,8 @@ fieldset:disabled .btn {
 
 /* css style */
 :root {
-  --primary-color: #fbb034;
-  --secondary-color: #00a4f5;
+  --primary-color: crimson;
+  --secondary-color: crimson;
   --bg-color: #fff;
   --heading-color: #060606;
   --font-color: #6f6f6f;
@@ -11795,14 +11795,14 @@ fieldset:disabled .btn {
   --bg-light: #fbfbfb;
   --box-shadow: 0 0.5rem 1rem rgb(12 12 12 / 5%);
   --banner-layer: rgb(255 255 255 / 90%);
-  --gradient-color: linear-gradient(to left, #11d5ff 0%, #0089cd 100%);
-  --gradient-color-banner: linear-gradient(to left, #00c9f5 0%, #00a4f5 100%);
+  --gradient-color: crimson;
+  --gradient-color-banner:  linear-gradient(to top left, #0099cc 0%, #ccffff 100%);
   --layer: rgb(1 121 179 / 75%);
   --subscribe-footer-input: #fff;
 }
 
 [data-theme="dark"] {
-  --primary-color: #fbb034;
+  --primary-color: crimson;
   --secondary-color: #00a4f5;
   --bg-color: #08171e;
   --heading-color: #fdfffc;
@@ -19418,7 +19418,7 @@ p.banner-sub {
 
 .sub-banner-image img {
   position: absolute;
-  top: -162px;
+  top: -80px;
   right: 0px;
 }
 

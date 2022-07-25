@@ -19,47 +19,36 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private boolean invalidateHttpSession = true;
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests().antMatchers("/login").permitAll()
-//                .antMatchers("/contact/**", "/holidays/**").hasAuthority("Admin");
-//        http.authorizeRequests().anyRequest().permitAll()
-//                .and().formLogin()
-//                .and().httpBasic();
 
-        http.csrf().ignoringAntMatchers("/savemsg").and() //this is to activate CSRF protection for public page Contact Page
+        http.csrf().ignoringAntMatchers("/saveMsg").ignoringAntMatchers("/public/**").and()
                 .authorizeRequests()
                 .mvcMatchers("/dashboard").authenticated()
                 .mvcMatchers("/displayMessages").hasRole("ADMIN")
                 .mvcMatchers("/home").permitAll()
                 .mvcMatchers("/holidays/**").permitAll()
                 .mvcMatchers("/contact").permitAll()
-                .mvcMatchers("/courses").authenticated()
+                .mvcMatchers("/saveMsg").permitAll()
+                .mvcMatchers("/courses").permitAll()
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/login").permitAll()
-                .and().formLogin()
-                .loginPage("/login")
+                .mvcMatchers("/public/**").permitAll()
+                .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
 
 
-
     }
 
-
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)throws Exception{//configuring multiple user and password using :inMemoryAuthentication
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("user").password("12345").roles("USER")
                 .and()
                 .withUser("admin").password("54321").roles("ADMIN")
                 .and().passwordEncoder(NoOpPasswordEncoder.getInstance());
-
     }
-
 
 }
