@@ -12,11 +12,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Component
 public class EazySchoolUsernamePwdAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
@@ -39,7 +41,7 @@ public class EazySchoolUsernamePwdAuthenticationProvider implements Authenticati
 
     private List<GrantedAuthority> getGrantedAuthorities(Roles roles) {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + roles.getRoleName));
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + roles.getRoleName()));
         return grantedAuthorities;
     }
 

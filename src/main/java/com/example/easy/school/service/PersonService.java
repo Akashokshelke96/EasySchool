@@ -5,12 +5,14 @@ import com.example.easy.school.models.Person;
 import com.example.easy.school.models.Roles;
 import com.example.easy.school.repository.PersonRepository;
 import com.example.easy.school.repository.RolesRepository;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@Data
 public class PersonService {
 
     @Autowired
